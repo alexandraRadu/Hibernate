@@ -72,7 +72,7 @@ public class AppController {
 	}
 
 	
-	@RequestMapping(value = "/newUser", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String newRegistration(ModelMap model) {
 		User user = new User();
 		model.addAttribute("user", user);
@@ -83,7 +83,7 @@ public class AppController {
 	 * This method will be called on form submission, handling POST request It
 	 * also validates the user input
 	 */
-	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String saveRegistration(@Valid User user,
 			BindingResult result, ModelMap model) {
 
