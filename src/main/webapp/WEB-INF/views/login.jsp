@@ -35,7 +35,8 @@
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
 				<p class="submit">
-					<input type="submit" name="commit" value="Login">
+					<input type="submit" name="commit" value="Login"><br/>
+					<div>You don't have an account? <a href = "register">Register</a>!</div>
 				</p>
 			</form>
 		</div>

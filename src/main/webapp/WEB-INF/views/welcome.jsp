@@ -8,7 +8,7 @@
 	<link href="<c:url value='/static/css/style.css' />" rel="stylesheet"></link>
 </head>
 <body>
-	<a href = "login"><input type="button" value="Login" name="Login" /></a><br/><br/>
-	<a href = "register"><input type="button" value="Register" name="Register" /></a>
+	Dear <strong>${user}</strong>, Welcome to User Page. </br>
+	<a href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>

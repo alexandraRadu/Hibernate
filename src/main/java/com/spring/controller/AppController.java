@@ -33,12 +33,22 @@ public class AppController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+	/*@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
 		model.addAttribute("greeting", "Hi, Welcome to mysite");
 		return "welcome";
+	}*/
+	@RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
+	public String homePage(ModelMap model) {
+		return "login";
 	}
 
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String UserPage(ModelMap model) {
+		model.addAttribute("user", getPrincipal());
+		return "welcome";
+	}
+	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(ModelMap model) {
 		model.addAttribute("user", getPrincipal());
@@ -57,10 +67,10 @@ public class AppController {
 		return "accessDenied";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage() {
 		return "login";
-	}
+	}*/
 	
 	@RequestMapping(value = "/userslist", method = RequestMethod.GET)
 	public String usersListPage() {
