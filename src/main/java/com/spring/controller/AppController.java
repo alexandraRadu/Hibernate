@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.model.User;
-import com.spring.model.UserProfile;
-import com.spring.service.UserProfileService;
+import com.spring.model.UserRole;
+import com.spring.service.UserRoleService;
 import com.spring.service.UserService;
 
 
@@ -28,7 +28,7 @@ import com.spring.service.UserService;
 public class AppController {
 
 	@Autowired
-	UserProfileService userProfileService;
+	UserRoleService userProfileService;
 	
 	@Autowired
 	UserService userService;
@@ -60,6 +60,11 @@ public class AppController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage() {
 		return "login";
+	}
+	
+	@RequestMapping(value = "/userslist", method = RequestMethod.GET)
+	public String usersListPage() {
+		return "userslist";
 	}
 
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
@@ -100,7 +105,7 @@ public class AppController {
 		System.out.println("Email : "+user.getEmail());
 		System.out.println("Checking UsrProfiles....");
 		if(user.getUserProfiles()!=null){
-			for(UserProfile profile : user.getUserProfiles()){
+			for(UserRole profile : user.getUserProfiles()){
 				System.out.println("Profile : "+ profile.getType());
 			}
 		}
@@ -127,7 +132,7 @@ public class AppController {
 	
 	
 	@ModelAttribute("roles")
-	public List<UserProfile> initializeProfiles() {
+	public List<UserRole> initializeProfiles() {
 		return userProfileService.findAll();
 	}
 

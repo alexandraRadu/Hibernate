@@ -24,5 +24,6 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 		crit.add(Restrictions.eq("ssoId", sso));
 		return (User) crit.uniqueResult();
 	}
+	
 
 }

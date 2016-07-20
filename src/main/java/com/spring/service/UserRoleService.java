@@ -1,10 +1,12 @@
-package com.spring.dao;
+package com.spring.service;
 
 import java.util.List;
 
 import com.spring.model.UserRole;
 
-public interface UserProfileDao {
+
+
+public interface UserRoleService {
 
 	List<UserRole> findAll();
 	

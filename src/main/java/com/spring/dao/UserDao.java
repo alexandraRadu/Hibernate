@@ -1,5 +1,7 @@
 package com.spring.dao;
 
+import java.util.List;
+
 import com.spring.model.User;
 
 public interface UserDao {
@@ -9,5 +11,6 @@ public interface UserDao {
 	User findById(int id);
 	
 	User findBySSO(String sso);
+	
 	
 }
