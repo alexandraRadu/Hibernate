@@ -124,7 +124,7 @@ public class AppController {
 			}
 		}
 		
-		model.addAttribute("success", "User " + user.getFirstName() + " has been registered successfully");
+		model.addAttribute("success",   user.getFirstName() + " has been registered successfully");
 		return "registrationsuccess";
 	}
 	
@@ -158,7 +158,7 @@ public class AppController {
 	 
 	        userService.updateUser(user);
 	 
-	        model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " updated successfully");
+	        model.addAttribute("success",  user.getFirstName() + " "+ user.getLastName() + " updated successfully");
 	        return "registrationsuccess";
 	    }
 

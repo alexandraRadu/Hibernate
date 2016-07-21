@@ -4,14 +4,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>User Registration Form</title>
-	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
-	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+	<link href="<c:url value='/static/css/style.css' />" rel="stylesheet"></link>
 </head>
 <body>
-	<div class="success">
-		Confirmation message : ${success}
+	<h3 >
+		${success}
 		
-	</div>
+	</h3>
 	
 </body>
 </html>

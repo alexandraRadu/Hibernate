@@ -6,11 +6,14 @@
 	<title>Welcome page</title>
 	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
 	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+		<link href="<c:url value='/static/css/style.css' />" rel="stylesheet"></link>
 </head>
 <body>
 	<div class="success">
-		Greeting : ${greeting}
-		This is a welcome page.
+		Dear <strong>${user}</strong>, welcome to User Page. <br /></br>
+		<a href="logout"> <p class = "button"><input type="button" value="Logout"
+				name="Logout"/></p>
+			</a>
 	</div>
 </body>
 </html>
