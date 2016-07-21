@@ -24,6 +24,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Qualifier("customUserDetailsService")
 	UserDetailsService userDetailsService;
 	
+	@Autowired
+	CustomSucessHandler customSuccessHandler;
 	
 	@Autowired
 	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {

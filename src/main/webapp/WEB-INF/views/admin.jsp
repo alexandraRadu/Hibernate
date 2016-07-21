@@ -16,4 +16,5 @@
 		<a href="<c:url value="/logout" />">Logout</a>
 	</div>
 </body>
+
 </html>
