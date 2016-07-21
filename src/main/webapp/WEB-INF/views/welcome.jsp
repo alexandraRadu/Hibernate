@@ -4,11 +4,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Welcome page</title>
-	<!-- <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link> -->
-	<link href="<c:url value='/static/css/style.css' />" rel="stylesheet"></link>
+	<link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
+	<link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 </head>
 <body>
-	Dear <strong>${user}</strong>, Welcome to User Page. </br>
-	<a href="<c:url value="/logout" />">Logout</a>
+	<div class="success">
+		Greeting : ${greeting}
+		This is a welcome page.
+	</div>
 </body>
 </html>

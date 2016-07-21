@@ -2,13 +2,13 @@ package com.spring.dao;
 
 import java.util.List;
 
-import com.spring.model.UserRole;
+import com.spring.model.UserProfile;
 
 public interface UserProfileDao {
+	
+	List<UserProfile> findAll();
 
-	List<UserRole> findAll();
-	
-	UserRole findByType(String type);
-	
-	UserRole findById(int id);
+	UserProfile findByType(String type);
+
+	UserProfile findById(int id);
 }

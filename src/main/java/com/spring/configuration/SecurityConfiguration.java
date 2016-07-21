@@ -18,9 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	CustomSuccessHandler customSuccessHandler;
-	
-	@Autowired
 	@Qualifier("customUserDetailsService")
 	UserDetailsService userDetailsService;
 	

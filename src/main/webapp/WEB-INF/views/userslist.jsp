@@ -10,6 +10,7 @@
 <link href="<c:url value='/static/css/bootstrap.css' />"
 	rel="stylesheet"></link>
 <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+<link href="<c:url value='/static/css/style.css' />" rel="stylesheet"></link>
 </head>
 
 <body>
@@ -43,11 +44,11 @@
 							<td>${user.last_Name}</td>
 							<td>${user.email}</td>
 							<td>${user.sso_Id}</td>
-							<td><a href="<c:url value='/edit-user-${user.ssoId}' />"
+							<td><a href="<c:url value='/edit-user-${user.sso_Id}' />"
 								class="btn btn-success 
  
 custom-width">edit</a></td>
-							<td><a href="<c:url value='/delete-user-${user.ssoId}' />"
+							<td><a href="<c:url value='/delete-user-${user.sso_Id}' />"
 								class="btn btn-danger 
  
 custom-width">delete</a></td>
