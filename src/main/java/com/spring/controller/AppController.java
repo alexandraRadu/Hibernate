@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,9 +34,19 @@ public class AppController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+	/*@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
 		model.addAttribute("greeting", "Hi, Welcome to mysite");
+		return "welcome";
+	}*/
+	@RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
+	public String homePage(ModelMap model) {
+		return "login";
+	}
+
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String UserPage(ModelMap model) {
+		model.addAttribute("user", getPrincipal());
 		return "welcome";
 	}
 
@@ -57,9 +68,10 @@ public class AppController {
 		return "accessDenied";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String loginPage() {
-		return "login";
+	
+	@RequestMapping(value = "/userslist", method = RequestMethod.GET)
+	public String usersListPage() {
+		return "userslist";
 	}
 
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
@@ -72,18 +84,25 @@ public class AppController {
 	}
 
 	
-	@RequestMapping(value = "/newUser", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String newRegistration(ModelMap model) {
 		User user = new User();
 		model.addAttribute("user", user);
 		return "newuser";
 	}
+	
+	 @RequestMapping(value = { "/delete-user-{ssoId}" }, method = RequestMethod.GET)
+	    public String deleteUser(@PathVariable String ssoId) {
+	        userService.deleteUserBySSO(ssoId);
+	        return "redirect:/userslist";
+	    }
 
 	/*
 	 * This method will be called on form submission, handling POST request It
 	 * also validates the user input
 	 */
-	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String saveRegistration(@Valid User user,
 			BindingResult result, ModelMap model) {
 
@@ -108,6 +127,40 @@ public class AppController {
 		model.addAttribute("success", "User " + user.getFirstName() + " has been registered successfully");
 		return "registrationsuccess";
 	}
+	
+	 @RequestMapping(value = { "/edit-user-{ssoId}" }, method = RequestMethod.GET)
+	    public String editUser(@PathVariable String ssoId, ModelMap model) {
+	        User user = userService.findBySso(ssoId);
+	        model.addAttribute("user", user);
+	        model.addAttribute("edit", true);
+	        return "newuser";
+	    }
+	     
+	    /**
+	     * This method will be called on form submission, handling POST request for
+	     * updating user in database. It also validates the user input
+	     */
+	    @RequestMapping(value = { "/edit-user-{ssoId}" }, method = RequestMethod.POST)
+	    public String updateUser(@Valid User user, BindingResult result,
+	            ModelMap model, @PathVariable String ssoId) {
+	 
+	        if (result.hasErrors()) {
+	            return "newuser";
+	        }
+	 
+	        /*//Uncomment below 'if block' if you WANT TO ALLOW UPDATING SSO_ID in UI which is a unique key to a User.
+	        if(!userService.isUserSSOUnique(user.getId(), user.getSsoId())){
+	            FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
+	            result.addError(ssoError);
+	            return "registration";
+	        }*/
+	 
+	 
+	        userService.updateUser(user);
+	 
+	        model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " updated successfully");
+	        return "registrationsuccess";
+	    }
 
 	
 	

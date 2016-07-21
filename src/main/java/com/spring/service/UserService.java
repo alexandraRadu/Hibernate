@@ -1,5 +1,7 @@
 package com.spring.service;
 
+import java.util.List;
+
 import com.spring.model.User;
 
 public interface UserService {
@@ -10,4 +12,9 @@ public interface UserService {
 	
 	User findBySso(String sso);
 	
+	void updateUser(User user);
+    
+    void deleteUserBySSO(String sso);
+ 
+    List<User> findAllUsers(); 
 }
